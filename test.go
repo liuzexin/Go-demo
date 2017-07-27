@@ -24,6 +24,7 @@ func main() {
     }
     other()
     second()
+    third()
     fmt.Printf("hello,word \n", a, b.x)
 }
 func another(){
@@ -46,4 +47,16 @@ func second(){
     for i := range testMap{
         fmt.Printf("%d,%d \n",i,  testMap[i])
     }
+}
+
+func third(){
+    test := func (x int) float64{
+        return float64(x) * 3.0
+    }
+    res := fourth(test)
+    fmt.Println(res)
+}
+
+func fourth(f func (int) float64) float64{
+    return f(3)
 }
