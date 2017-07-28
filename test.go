@@ -25,6 +25,8 @@ func main() {
     other()
     second()
     third()
+    c := &b
+    c.fifth()
     fmt.Printf("hello,word \n", a, b.x)
 }
 func another(){
@@ -59,4 +61,10 @@ func third(){
 
 func fourth(f func (int) float64) float64{
     return f(3)
+}
+
+func (s *MyStruct) fifth() int{
+    res := s.x + s.y
+    fmt.Println(res)
+    return res
 }
