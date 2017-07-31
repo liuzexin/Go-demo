@@ -16,6 +16,9 @@ var m = map[string]Vertex{
     },
 }
 */
+type Api interface{
+    api() int
+}
 func main() {
     var a []int
     var b = MyStruct{1,2}
@@ -25,9 +28,12 @@ func main() {
     other()
     second()
     third()
+    sixth()
     c := &b
     c.fifth()
     fmt.Printf("hello,word \n", a, b.x)
+    seventh()
+    eighth()
 }
 func another(){
     var b = make([]int,3, 5)
@@ -67,4 +73,26 @@ func (s *MyStruct) fifth() int{
     res := s.x + s.y
     fmt.Println(res)
     return res
+}
+func sixth(){
+    var a int
+    a = 10
+    b := &a
+    fmt.Println(a, b)
+}
+func seventh(){
+    var a Api
+    b := MyStruct{1, 2}
+    a = &b
+    c := a.api()
+    fmt.Println(c)
+}
+func (m MyStruct) api() int{
+    return 64
+}
+func eighth(){
+    var a [4]byte
+    a = [4]byte{1, 2, 3, 4}
+    b := string(a[:])
+    fmt.Println(b)
 }
