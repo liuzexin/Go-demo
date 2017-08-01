@@ -1,6 +1,6 @@
 package main
 import "fmt"
-
+import "net/http"
 type MyStruct struct{
     x int
     y int
@@ -24,6 +24,10 @@ func main() {
     var b = MyStruct{1,2}
     if b.x == 1{
         fmt.Println(b.x)
+    }
+    err := http.ListenAndServe("localhost:60000", b);
+    if err != nil {
+        fmt.Println(err)
     }
     other()
     second()
@@ -95,4 +99,7 @@ func eighth(){
     a = [4]byte{1, 2, 3, 4}
     b := string(a[:])
     fmt.Println(b)
+}
+func (ms MyStruct ) ServeHTTP (w http.ResponseWriter ,r *http.Request){
+    fmt.Fprint(w, "My Struct")
 }
