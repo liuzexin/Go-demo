@@ -1,6 +1,7 @@
 package main
 import "fmt"
 import "net/http"
+//import "time"
 type MyStruct struct{
     x int
     y int
@@ -20,24 +21,25 @@ type Api interface{
     api() int
 }
 func main() {
-    var a []int
-    var b = MyStruct{1,2}
-    if b.x == 1{
-        fmt.Println(b.x)
-    }
-    err := http.ListenAndServe("localhost:60000", b);
-    if err != nil {
-        fmt.Println(err)
-    }
-    other()
-    second()
-    third()
-    sixth()
-    c := &b
-    c.fifth()
-    fmt.Printf("hello,word \n", a, b.x)
-    seventh()
-    eighth()
+    //var a []int
+    //var b = MyStruct{1,2}
+    //if b.x == 1{
+    //    fmt.Println(b.x)
+    //}
+    //err := http.ListenAndServe("localhost:60000", b);
+    //if err != nil {
+    //    fmt.Println(err)
+    //}
+    //other()
+    //second()
+    //third()
+    //sixth()
+    //c := &b
+    //c.fifth()
+    //fmt.Printf("hello,word \n", a, b.x)
+    //seventh()
+    //eighth()
+    nighth()
 }
 func another(){
     var b = make([]int,3, 5)
@@ -102,4 +104,14 @@ func eighth(){
 }
 func (ms MyStruct ) ServeHTTP (w http.ResponseWriter ,r *http.Request){
     fmt.Fprint(w, "My Struct")
+}
+func nighth(){
+    //go time.Sleep(10 * time.Second)
+    ch := make(chan int)
+    ch <- 100
+    tenth(ch)
+}
+func tenth(ch chan int){
+    x := <- ch
+    fmt.Println(x)
 }
