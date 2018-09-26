@@ -10,4 +10,5 @@ func main() {
 
 	p, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 	fmt.Println(p)
+	fmt.Println(os.Getenv("USER"))
 }
